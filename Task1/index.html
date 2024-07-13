@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Calorie Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="forms-container">
+        <div class="signup-form">
+            <form action="profile.html">
+                <h2>Sign up</h2>
+                <div class="columns-container">
+                <div class="column1">
+                    <input type="text" placeholder="Enter your name" required>
+                    <input type="email" placeholder="Enter your email" required>
+                    <input type="password" placeholder="Create password" required>
+                    <input type="password" placeholder="Confirm password" required>
+                </div>
+                <div class="column2">
+                    <input type="number" placeholder="Enter your age" required>
+                    <input type="number" placeholder="Height (cm)" required>
+                    <input type="number" placeholder="Weight (kg)" required>
+                    <input type="number" placeholder="Calorie Goal" required>
+                </div>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I accept all terms & conditions</label>
+                </div>
+                <button type="submit">Register Now</button>
+                <p class="login-link">Already have an account? <u href="#" onclick="event.preventDefault(); toggleForm(true);">Login now</u></p>
+            </form>
+        </div>
+        
+           
+        <div class="login-form" style="display: none;">
+            <form action="profile.html">
+                <h2>Login</h2>
+                <input type="email" placeholder="Enter your email" required>
+                <input type="password" placeholder="Enter password" required>
+                <button type="submit">Login Now</button>
+            </form>
+        </div>
+    </div>
+    <div class="slogan">
+        <h1>Calorie Tracker</h1>
+    </div>
+    <script>
+       function toggleForm(showLogin) {
+    const loginForm = document.querySelector('.login-form');
+    const signupForm = document.querySelector('.signup-form');
+    if (showLogin) {
+        signupForm.style.display = 'none';
+        loginForm.style.display = 'block';
+    } else {
+        signupForm.style.display = 'block';
+        loginForm.style.display = 'none';
+    }
+}
+
+    </script>
+</body>
+</html>

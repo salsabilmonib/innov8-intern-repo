@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Calorie Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        Welcome to Calorie Tracker
+    </header>
+    <div class="profile">
+        <img src="profileSample.jpg" alt="Profile Photo" class="profile-photo">
+        <h2>Salsabil Monib</h2>
+        <p>Email: salsabillotfymonib@gmail.com</p>
+        <p>Age: 23</p>
+        <p>Height: 165 cm</p>
+        <p>Weight: 60 kg</p>
+        <p>Calorie Goal: 1800 kcal</p>
+    </div>
+    <div class="leftcontent">
+    <table>
+        <tr><th>Food</th><th>Calories per 100g</th></tr>
+        <tr><td>Apple</td><td>49</td></tr>
+        <tr><td>bread</td><td>239</td></tr>
+        <tr><td>rice</td><td>323</td></tr>
+        <tr><td>chicken</td><td>400</td></tr>      
+    </table>
+   
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <button onclick="press('1')">1</button>
+        <button onclick="press('2')">2</button>
+        <button onclick="press('3')">3</button>
+        <button onclick="press('4')">4</button>
+        <button onclick="press('5')">5</button>
+        <button onclick="press('6')">6</button>
+        <button onclick="press('7')">7</button>
+        <button onclick="press('8')">8</button>
+        <button onclick="press('9')">9</button>
+        <button onclick="press('0')">0</button>
+        <button onclick="press('+')">+</button>
+        <button onclick="equals()">=</button>
+        <button onclick="clearDisplay()">C</button>
+    </div>
+    </div>
+    
+    <script>
+        function press(num) {
+            document.getElementById('display').value += num;
+        }
+
+        function equals() {
+            document.getElementById('display').value = eval(document.getElementById('display').value);
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+    </script>
+  
+</body>
+</html>
