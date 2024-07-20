@@ -1,0 +1,267 @@
+
+body {
+    font-family: 'Lato', sans-serif; 
+    background-image: linear-gradient(to right, #3AAFA9, #DEF2F1); 
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+header {
+    background-color: #17252a;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 30px;
+    color: white;
+    text-align: start;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+
+.container {
+    background: #fff; 
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px #17252a; 
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.profile {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: px;
+    margin-right: 10px;
+    margin-left: 40px;    
+    background: white;
+    padding: 10px;
+    border: 2px solid #17252a;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px #17252a;
+}
+
+.columns-container{
+    display: flex;
+    flex-direction: row;
+    
+    justify-content:flex-start;
+    gap: 70px;
+    width:100%;
+}
+
+.column1{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.column2 {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profile-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #fff; 
+    object-fit: cover;
+}
+
+
+
+.leftcontent {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+table {
+    width: 100%;
+    max-width: 850px;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    border: 2px solid #02310a; 
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px #17252a;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+    background-color: #fff; 
+}
+
+th {
+    background-color: #17252a; 
+    color: #fff; 
+}
+
+.calculator {
+    width: 100%;
+    max-width: 820px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+    border: 2px solid #17252a; 
+    padding: 10px; 
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: white;
+    background-color: #17252a; 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.button:hover {
+    background-color: #2f3d42; 
+}
+
+.calculator button {
+    background-color: #17252a; 
+    color: white;
+    border: none;
+    border-radius: 8px; 
+    padding: 10px 0;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.calculator button:hover {
+    background-color: #2f3d42;
+}
+
+#display {
+    grid-column: span 4;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #fff;
+    text-align: left;
+    border: 2px solid #17252a;
+    border-radius: 8px; 
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #17252A;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    
+}
+
+.forms-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px; 
+    margin: auto;
+    padding: 20px;
+}
+
+
+
+.signup-form, .login-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    width: 100%;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex; 
+    
+}
+
+.signup-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+
+.input-field, input[type="number"], input[type="email"], input[type="password"], input[type="text"] {
+    width: 100%; 
+    padding: 10px;
+    margin-bottom: 10px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+button {
+    background-color: #17252a;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #17252a;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-link a {
+    color: #17252a;
+    text-decoration: none;
+}
+
+.slogan {
+    text-align: start;
+   
+}
+
+.slogan h1 {
+    color: #17252a;
+    font-size: 60px;
+    font-family: "Times New Roman", Times, serif;
+}
