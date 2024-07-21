@@ -1,0 +1,304 @@
+CREATE TABLE Employee (
+    Fname VARCHAR(50),
+    Lname VARCHAR(50),
+    SSN CHAR(10) PRIMARY KEY,
+    BDATE DATE,
+    Address VARCHAR(100),
+    Sex CHAR(1),
+    Salary INT,
+    Superssn INT,
+    Dno INT
+);
+
+CREATE TABLE Department (
+    Dname VARCHAR(10),
+    DNumber INT PRIMARY KEY,
+    MGRSSN CHAR(10),
+    MGRStartdate DATE,
+    FOREIGN KEY (MGRSSN) REFERENCES Employee(SSN)
+);
+
+ALTER TABLE Employee
+ADD FOREIGN KEY (Dno) REFERENCES Department(DNumber);
+
+CREATE TABLE Project (
+    Pname VARCHAR(50),
+    Pnumber INT PRIMARY KEY,
+    Plocation VARCHAR(50),
+    City Char(50) ,
+    Dnum INT,
+    FOREIGN KEY (Dnum) REFERENCES Department(DNumber)
+);
+
+CREATE TABLE Works_for (
+    ESSN CHAR(10),
+    Pno INT,
+    Hours INT,
+    PRIMARY KEY (ESSN, Pno),
+    FOREIGN KEY (ESSN) REFERENCES Employee(SSN),
+    FOREIGN KEY (Pno) REFERENCES Project(Pnumber)
+);
+
+
+
+
+CREATE TABLE Dependent (
+    ESSN CHAR(10),
+    Dependent_name VARCHAR(100),
+    Sex CHAR(1),
+    Bdate DATE,
+    PRIMARY KEY (ESSN, Dependent_name),
+    FOREIGN KEY (ESSN) REFERENCES Employee(SSN)
+);
+
+
+
+------------------------------------------------------------------------
+
+
+
+INSERT INTO Department (Dname, DNumber, MGRSSN, MGRStartdate) VALUES
+('DP1', 10, '223344', '2005-01-01'),
+('DP2', 20, '968574', '2006-03-01'),
+('DP3', 30, '512463', '2006-06-01');
+
+
+INSERT INTO Employee (Fname, Lname, SSN, BDATE, Address, Sex, Salary, Superssn, Dno) VALUES
+('Ahmed', 'Ali', '112233', '1965-01-01', '15 Ali fahmy St.Giza', 'M', 1300, '223344', 10),
+('Kamel', 'Mohamed', '223344', '1970-10-15', '38 Mohy el dien abo el Ezz St.Cairo', 'M', 1800, '321654', 10),
+('Hanaa', 'Sobhy', '123456', '1973-03-18', '38 Abdel Khalik Tharwat St. Downtown.Cairo', 'F', 800, '223344', 10),
+('Amr', 'Omran', '321654', '1963-09-14', '44 Hilopolis.Cairo', 'M', 2500, NULL, NULL),
+('Noha', 'Mohamed', '968574', '1975-02-01', '55 Orabi St. El Mohandiseen .Cairo', 'F', 1600, '321654', 20),
+('Edward', 'Hanna', '512463', '1972-08-19', '18 Abaas El 3akaad St. Nasr City.Cairo', 'M', 1500, '321654', 30),
+('Mariam', 'Adel', '669955', '1982-06-12', '269 El-Haram st. Giza', 'F', 750, '512463', 20),
+('Maged', 'Raoof', '521634', '1980-04-06', '18 Kholosi st.Shobra.Cairo', 'M', 1000, '968574', 30);
+
+
+INSERT INTO Project (Pname, Pnumber, Plocation,City , Dnum) VALUES
+('AL Solimaniah', 100, 'Cairo_Alex Road', 'Alex' ,  10),
+('Al Rabwah', 200, '6th of October City', 'Giza' , 10),
+('Al Rawdah', 300, 'Zaied City', 'Giza' ,  10),
+('Al Rowad', 400, 'Cairo_Faiyom Road ', 'Giza' ,  20),
+('Al Rehab', 500, 'Nasr City ', 'Cairo' ,  30),
+('Pitcho american', 600, 'Maady ', 'Cairo' ,  30),
+('Ebad El Rahman', 700, 'Ring Road ', 'Cairo' , 20);
+
+-- Works_on Data
+INSERT INTO Works_for (ESSN, Pno, Hours) VALUES
+('223344', 100, 10),
+('223344', 200, 10),
+('223344', 300, 10),
+('112233', 100, 40),
+('968574', 400, 15),
+('968574', 700, 15),
+('968574', 300, 10),
+('669955', 400, 20),
+('223344', 500, 10),
+('669955', 700, 7),
+('669955', 300, 10),
+('512463', 500, 10),
+('512463', 600, 25),
+('521634', 500, 10),
+('521634', 600, 20),
+('521634', 300, 6),
+('521634', 400, 4);
+
+-- Dependent Data
+INSERT INTO Dependent (ESSN, Dependent_name, Sex, Bdate) VALUES
+('112233', 'Hala Saied Ali', 'F', '1970-10-18'),
+('223344', 'Ahmed Kamel Shawki', 'M', '1998-03-27'),
+('223344', 'Mona Adel Mohamed', 'F', '1975-04-25'),
+('321654', 'Ramy Amr Omran', 'M', '1990-01-26'),
+('321654', 'Omar Amr Omran', 'M', '1993-03-30'),
+('321654', 'Sanaa Gawish', 'F', '1973-05-16'),
+('512463', 'Sara Edward', 'F', '2001-09-15'),
+('512463', 'Nora Ghaly', 'F', '1976-06-22');
+
+
+
+------------------------------------------------------------------------
+
+ALTER TABLE Employee
+ADD FOREIGN KEY (Dno) REFERENCES Department(DNumber);
+
+ALTER TABLE Department 
+ADD FOREIGN KEY (MGRSSN) REFERENCES Employee(SSN);
+
+ALTER TABLE Project
+ADD FOREIGN KEY (Dnum) REFERENCES Department(DNumber);
+
+ALTER TABLE Works_for
+ADD FOREIGN KEY (ESSN) REFERENCES Employee(SSN);
+
+ALTER TABLE Works_for
+ADD FOREIGN KEY (Pno) REFERENCES Project(Pnumber);
+
+ALTER TABLE Dependent 
+ADD FOREIGN KEY (ESSN) REFERENCES Employee(SSN);
+
+
+
+--------------------------------------------------------------------------------
+
+
+
+1.SELECT * FROM Employee;
+
+2.SELECT Fname, Lname, Salary, Dno FROM Employee;
+
+3.SELECT Pname, Plocation, Dnum FROM Project;
+
+4.SELECT Fname + ' ' + Lname AS FullName, Salary 1.2 AS ANNUAL_COMM FROM Employee;
+
+5.SELECT SSN, Fname, Lname FROM employee WHERE salary > 1000;
+
+6.SELECT SSN, Fname , Lname FROM employee WHERE salary*12 > 10000;
+
+7.SELECT Fname, Lname, salary FROM employee WHERE Sex = 'F' ;
+
+8.SELECT DNumber, Dname FROM Department WHERE MGRSSN = 968574
+
+9.SELECT Pnumber, Pname, Plocation FROM Project WHERE Dnum = 10
+
+10.SELECT D.DNumber, D.Dname, E.Fname, E.Lname, E.SSN FROM department  D JOIN employee E ON E.SSN = D.MGRSSN;
+
+11.SELECT Dname, Pname FROM Department d , Project p WHERE p.Dnum = d.Dnum;
+
+12.SELECT D.*, E.Fname , E.Lname FROM Dependent D JOIN Employee E ON D.ESSN = E.SSN;
+
+13.SELECT Dependent_name, Sex FROM Dependent WHERE Sex = 'F' AND ESSN IN (SELECT SSN FROM Employee WHERE Sex = 'F')
+UNION
+SELECT Dependent_name, Sex FROM Dependent WHERE Sex = 'M' AND ESSN IN (SELECT SSN FROM Employee WHERE Sex = 'M');
+
+14.SELECT * FROM Employee WHERE SSN IN (SELECT MGRSSN FROM Department);
+
+15.SELECT Pnumber, Pname, Plocation FROM Project WHERE City = 'Cairo'OR City= 'Alex';
+
+16.SELECT * FROM Project WHERE Pname LIKE 'A%' 
+
+17.SELECT * FROM Employee WHERE Dno = 30 AND Salary >= 1000 AND Salary < 2000;
+
+18.SELECT E.Fname, E.Lname FROM Employee E JOIN Works_For W ON E.SSN = W.ESSN JOIN Project P ON P.Pnumber = W.Pno 
+WHERE W.Hours >= 10 AND Pno AND P.Pname = 'AL Rabwah' 
+
+19.SELECT E.Fname, E.Lname FROM Employee E
+WHERE E.Superssn = (SELECT SSN FROM Employee WHERE Fname = 'Kamel' AND Lname = 'Mohamed');
+
+20.SELECT P.Pname, SUM(W.Hours) AS TotalHours FROM Project P JOIN Works_For W ON P.Pnumber = W.Pno
+GROUP BY P.Pname;
+
+21.SELECT E.Fname, E.Lname
+FROM Employee E
+JOIN Works_For W ON E.SSN = W.ESSN
+GROUP BY E.SSN
+HAVING COUNT(DISTINCT W.Pno) = (SELECT COUNT(*) FROM Project)
+ORDER BY E.Lname, E.Fname;
+
+22.SELECT D.* FROM Department D WHERE D.DNumber = ( SELECT MIN(E.Dno) FROM Employee E);
+
+23. SELECT D.Dname, MAX(E.Salary) AS Max_Salary,MIN(E.Salary) AS Min_Salary, AVG(E.Salary) AS Avg_Salary 
+FROM Department D JOIN Employee E ON D.DNumber = E.Dno GROUP BY D.Dname;
+
+24.SELECT E.Lname FROM Employee E
+WHERE E.SSN IN (SELECT MGRSSN FROM Department) AND E.SSN NOT IN (SELECT ESSN FROM Dependent)
+
+25. SELECT D.DNumber, D.Dname, COUNT(E.SSN) AS NumEmployees FROM Department D JOIN Employee E ON D.DNumber = E.Dno 
+    GROUP BY D.DNumber, D.Dname
+    HAVING AVG(E.Salary) < ( SELECT AVG(Salary) FROM Employee );
+    
+26.SELECT  E.Fname, E.Lname, P.Pname
+FROM Employee E
+JOIN Works_For W ON E.SSN = W.ESSN
+JOIN Project P ON W.Pno = P.Pnumber
+ORDER BY E.Dno, E.Lname, E.Fname;
+
+27.SELECT P.Pnumber, D.Dname, E.Lname AS ManagerLastName, E.Address AS ManagerAddress, E.BDATE AS ManagerBirthdate
+FROM Project P
+JOIN Department D ON P.Dnum = D.DNumber
+JOIN Employee E ON D.MGRSSN = E.SSN
+WHERE P.City = 'Cairo'
+
+28.SELECT DISTINCT P.Pnumber FROM Project P
+JOIN Works_For W ON P.Pnumber = W.Pno
+JOIN Employee E ON W.ESSN = E.SSN
+WHERE E.Lname = 'Mohamed'
+UNION
+SELECT DISTINCT P.Pnumber FROM Project P
+JOIN Department D ON P.Dnum = D.DNumber
+JOIN Employee E ON D.MGRSSN = E.SSN
+WHERE E.Lname = 'Mohamed';
+
+29.SELECT E.SSN, E.Fname , E.Lname 
+FROM Employee E
+WHERE NOT EXISTS (
+    SELECT D.ESSN
+    FROM Dependent D
+    WHERE D.ESSN = E.SSN
+);
+
+
+
+----------------------------------------
+
+1.INSERT INTO Employee (SSN, Fname, Lname, Address, BDATE, Sex, Salary, Superssn, Dno)
+VALUES ('102672', 'Salsabil', 'Monib', '20 kafr abdo st', '29-11-2001', 'F', 7000, '112233', 30);
+
+2.INSERT INTO Employee (SSN, Fname, Lname, Address, BDATE, Sex, Dno) VALUES ('102660', 'Farida', 'Ahmed', '12 mohandeseen st', '10-10-2001', 'F', 30);    
+    
+3.INSERT INTO Department (DNumber, Dname, MGRSSN, MGRStartdate)
+VALUES (100, 'DEPT IT', '112233', '2006-11-01');
+
+4.UPDATE Department
+SET MGRSSN = (SELECT SSN FROM Employee WHERE Fname = 'Noha' AND Lname = 'Mohamed')
+WHERE DNumber = 100;
+
+
+UPDATE Employee
+SET Dno = 100 
+WHERE Fname = 'Noha' and Lname = 'Mohamed';
+
+UPDATE Department
+SET MGRSSN = '102672'  
+WHERE DNumber = 20;
+
+UPDATE Employee
+SET Dno = 20 
+WHERE SSN = '102672';
+
+UPDATE Employee
+SET Superssn = '102672' 
+WHERE SSN = '102660';
+
+
+5.UPDATE Employee
+SET Superssn = '102672'
+WHERE Superssn = (SELECT SSN FROM Employee WHERE Fname = 'Kamel' AND Lname = 'Mohamed');;
+
+UPDATE Department
+SET MGRSSN = ' 102672'  
+WHERE MGRSSN = (SELECT SSN FROM Employee WHERE Fname = 'Kamel' AND Lname = 'Mohamed');
+
+UPDATE Employee
+SET Dno = (SELECT Dno FROM Employee WHERE Fname = 'Kamel' AND Lname = 'Mohamed')
+WHERE SSN = '102672';
+
+6.UPDATE Employee
+SET Salary = Salary * 1.20
+WHERE SSN = '102672';
+
+DELETE FROM Works_For WHERE ESSN = (SELECT SSN FROM Employee WHERE Fname = 'Kamel' AND Lname = 'Mohamed');
+
+DELETE FROM Dependent
+WHERE ESSN = (SELECT SSN FROM Employee WHERE Fname = 'Kamel' AND Lname = 'Mohamed');
+
+DELETE FROM Employee WHERE Fname = 'Kamel' AND Lname = 'Mohamed';
+
+
+
+
+
+
+
+
+
+
