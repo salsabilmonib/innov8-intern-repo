@@ -10,6 +10,7 @@ CREATE TABLE Employee (
     Dno INT
 );
 
+
 CREATE TABLE Department (
     Dname VARCHAR(10),
     DNumber INT PRIMARY KEY,
