@@ -83,7 +83,6 @@ INSERT INTO Project (Pname, Pnumber, Plocation,City , Dnum) VALUES
 ('Pitcho american', 600, 'Maady ', 'Cairo' ,  30),
 ('Ebad El Rahman', 700, 'Ring Road ', 'Cairo' , 20);
 
--- Works_on Data
 INSERT INTO Works_for (ESSN, Pno, Hours) VALUES
 ('223344', 100, 10),
 ('223344', 200, 10),
@@ -103,7 +102,6 @@ INSERT INTO Works_for (ESSN, Pno, Hours) VALUES
 ('521634', 300, 6),
 ('521634', 400, 4);
 
--- Dependent Data
 INSERT INTO Dependent (ESSN, Dependent_name, Sex, Bdate) VALUES
 ('112233', 'Hala Saied Ali', 'F', '1970-10-18'),
 ('223344', 'Ahmed Kamel Shawki', 'M', '1998-03-27'),
@@ -140,7 +138,7 @@ ADD FOREIGN KEY (ESSN) REFERENCES Employee(SSN);
 
 --------------------------------------------------------------------------------
 
-
+--DDL--
 
 1.SELECT * FROM Employee;
 
@@ -239,6 +237,8 @@ WHERE NOT EXISTS (
 
 
 ----------------------------------------
+
+--DML--
 
 1.INSERT INTO Employee (SSN, Fname, Lname, Address, BDATE, Sex, Salary, Superssn, Dno)
 VALUES ('102672', 'Salsabil', 'Monib', '20 kafr abdo st', '29-11-2001', 'F', 7000, '112233', 30);
